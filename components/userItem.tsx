@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { User } from '../types/User'
-import { EyeIcon } from './icons/eyeIcon'
 import { RightIcon } from './icons/rightIcon'
 
 export default function UserItem({user}:Props) {
