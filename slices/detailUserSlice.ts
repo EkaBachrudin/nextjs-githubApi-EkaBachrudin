@@ -1,8 +1,7 @@
-import { UserDetail } from '@/types/UserDetail'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export interface DetailUserState {
-    userDetail: UserDetail[]
+    userDetail: any
     loading: boolean
 }
 
@@ -19,7 +18,6 @@ export const getDetailUser: any = createAsyncThunk(
         const res = await fetch(
             `https://api.github.com/users/${username}`
         ).then((data) => data.json())
-
         return res
     }
 )
@@ -35,7 +33,6 @@ export const userDetailSlice = createSlice({
         builder.addCase(getDetailUser.fulfilled, (state: any, { payload }) => {
             state.loading = false
             state.userDetail = payload
-            console.log(payload)
         })
         builder.addCase(getDetailUser.rejected, (state: any) => {
             state.loading = false
