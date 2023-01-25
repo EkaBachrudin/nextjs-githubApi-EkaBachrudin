@@ -25,3 +25,15 @@
   background-color: #2f2f2f;
   transform: translateY(4px);
 }
+
+.card-item{
+      background-color: #2f2f2f;
+      border: 1px solid rgba(255, 255, 255, 0.306);
+      border-radius: 3px;
+      padding: 10px 20px;
+      transition: ease 200ms;
+}
+
+.card-item:hover{
+      background-color: #ffffff05;
+}

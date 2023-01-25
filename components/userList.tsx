@@ -5,13 +5,16 @@ import UserItem from './userItem'
 
 export default function UserList({search, users}:Props) {
   return (
-    <div>
-      
-      {users?.length != 0 ? <p>Hasil Pencarian : <span>{search}</span></p> : ""} 
-        {users?.map((user,index)=>(
-          <UserItem key={index} user={user}/>
-      ))}
-    </div>
+    <>
+          {users?.length != 0 ? <p>Hasil Pencarian : <span>{search}</span></p> : ""} 
+          
+          {users?.map((user, index) => (
+              <div key={index} className='card-item shadow mb-3'>
+                <UserItem user={user} />
+              </div>
+          ))}
+          
+    </>
   )
 }
 

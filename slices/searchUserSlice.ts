@@ -19,7 +19,7 @@ export const getUsers: any = createAsyncThunk(
     // callback function
     async (s) => {
         const res = await fetch(
-            `https://api.github.com/search/users?q=${s}&per_page=20`
+            `https://api.github.com/search/users?q=${s}`
         ).then((data) => data.json())
         let response = {
             res: res,

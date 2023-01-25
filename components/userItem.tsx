@@ -2,15 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { User } from '../types/User'
+import { EyeIcon } from './icons/eyeIcon'
+import { RightIcon } from './icons/rightIcon'
 
 export default function UserItem({user}:Props) {
   return (
-    <div>
-        <div>
+    <div className='d-flex justify-content-between'>
+        <div className='my-2'>
            <Image alt="profile" width={40} height={40} src={user?.avatar_url}/>
-            <span>{user.login}</span>
+           <span className='ms-5'>{user.login}</span>
         </div>
-        <span><Link href={`/detail/${user.login}`}> - </Link></span>
+        <span className='d-flex align-self-center align-items-center'><Link className='button ms-2 shadow-sm text-white' href={`/detail/${user.login}`}>   <RightIcon/>   </Link></span>
     </div>
   )
 }

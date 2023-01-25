@@ -1,4 +1,5 @@
 import React from 'react'
+import { EyeIcon } from './icons/eyeIcon';
 import { SearchIcon } from './icons/searchIcon';
 
 interface Props{
@@ -9,7 +10,7 @@ interface Props{
 export default function button({isLoading}:Props) {
   const Loading = ()=>{
     return (
-      <span>x</span>
+      <EyeIcon/>
     )
   }
 
