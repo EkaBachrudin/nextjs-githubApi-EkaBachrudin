@@ -1,8 +1,24 @@
+import Button from '@/components/button'
 import { Header } from '@/components/header'
-import { SearchIcon } from '@/components/icons/searchIcon'
+import UserList from '@/components/userList'
+import { useSelector, useDispatch } from 'react-redux'
 import Head from 'next/head'
+import { useState } from 'react'
+import { getUsers } from '@/slices/searchUserSlice'
+import { RootState } from '@/store'
+
 
 export default function Home() {
+  const [inputsearch,setInputSearch]=useState("")
+
+  const dispatch = useDispatch() 
+  const { users, loading, search } = useSelector((state: RootState) => state.searchUser)
+
+  const onSearchSubmit = (e:React.FormEvent<HTMLFormElement>)=>  {
+    e.preventDefault();
+    dispatch(getUsers(inputsearch))
+  }
+
   return (
     <>
       <Head>
@@ -16,12 +32,23 @@ export default function Home() {
           <Header></Header>
         </div>
         <div className="row mt-2 d-flex justify-content-center">
-          <div className="col-lg-6 d-flex">
-            <input className='searchUser' placeholder='Cari Penguna Github' />
-            <button className='button ms-2 shadow-sm'> <SearchIcon></SearchIcon> </button>
+          <div className="col-lg-6">
+            <form className='d-flex' onSubmit={onSearchSubmit}>
+              <input className='searchUser' placeholder='Cari Penguna Github' value={inputsearch} onChange={(e)=>setInputSearch(e.target.value)} />
+              <Button type='submit' isLoading={loading}/>
+            </form>
+          </div>
+        </div>
+        <div className="row mt-2 d-flex justify-content-center">
+          <div className="col-lg-6">
+            {users && <UserList users={users} search={search} />}
           </div>
         </div>
       </main>
     </>
   )
 }
+function dispatch(arg0: { payload: any; type: "searchUser/getDatas" }) {
+  throw new Error('Function not implemented.')
+}
+
